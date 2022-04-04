@@ -106,4 +106,7 @@ class Product with _$Product {
         metafieldList.add(Metafield.fromGraphJson(metafield ?? const {})));
     return metafieldList;
   }
+
+  @override
+  String toString() => 'Product(title: $title, id: $id, handle: $handle)';
 }
