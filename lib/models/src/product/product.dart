@@ -116,7 +116,7 @@ class Product with _$Product {
     List<SellingPlanGroup> sellingGroups = [];
     json['edges']?.forEach(
       (data) {
-        final sellingPlanGroup = data?['nodes'];
+        final sellingPlanGroup = data?['node'];
 
         if (sellingPlanGroup != null)
           sellingGroups.add(SellingPlanGroup.fromJson(sellingPlanGroup));
