@@ -1,6 +1,7 @@
 import 'package:flutter_simple_shopify/models/src/product/metafield/metafield.dart';
 import 'package:flutter_simple_shopify/models/src/product/option/option.dart';
 import 'package:flutter_simple_shopify/models/src/product/product_variant/product_variant.dart';
+import 'package:flutter_simple_shopify/models/src/product/selling_plan_group/selling_plan_group.dart';
 import 'package:flutter_simple_shopify/models/src/product/shopify_image/shopify_image.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -32,30 +33,34 @@ class Product with _$Product {
     String? description,
     String? descriptionHtml,
     String? handle,
+    required List<SellingPlanGroup> sellingPlanGroups,
   }) = _Product;
 
   static Product fromGraphJson(Map<String, dynamic> json) {
     return Product(
-        collectionList: _getCollectionList(json),
-        id: (json['node'] ?? const {})['id'],
-        title: (json['node'] ?? const {})['title'],
-        availableForSale: (json['node'] ?? const {})['availableForSale'],
-        createdAt: (json['node'] ?? const {})['createdAt'],
-        description: (json['node'] ?? const {})['description'],
-        productVariants: _getProductVariants(json),
-        descriptionHtml: (json['node'] ?? const {})['descriptionHtml'],
-        handle: (json['node'] ?? const {})['handle'],
-        onlineStoreUrl: (json['node'] ?? const {})['onlineStoreUrl'],
-        productType: (json['node'] ?? const {})['productType'],
-        publishedAt: (json['node'] ?? const {})['publishedAt'],
-        tags: _getTags(json),
-        updatedAt: (json['node'] ?? const {})['updatedAt'],
-        images: _getImageList((json['node'] ?? const {})['images'] ?? const {}),
-        cursor: json['cursor'],
-        option: _getOptionList((json['node'] ?? const {})),
-        vendor: (json['node'] ?? const {})['vendor'],
-        metafields: _getMetafieldList(
-            (json['node'] ?? const {})['metafields'] ?? const {}));
+      collectionList: _getCollectionList(json),
+      id: (json['node'] ?? const {})['id'],
+      title: (json['node'] ?? const {})['title'],
+      availableForSale: (json['node'] ?? const {})['availableForSale'],
+      createdAt: (json['node'] ?? const {})['createdAt'],
+      description: (json['node'] ?? const {})['description'],
+      productVariants: _getProductVariants(json),
+      descriptionHtml: (json['node'] ?? const {})['descriptionHtml'],
+      handle: (json['node'] ?? const {})['handle'],
+      onlineStoreUrl: (json['node'] ?? const {})['onlineStoreUrl'],
+      productType: (json['node'] ?? const {})['productType'],
+      publishedAt: (json['node'] ?? const {})['publishedAt'],
+      tags: _getTags(json),
+      updatedAt: (json['node'] ?? const {})['updatedAt'],
+      images: _getImageList((json['node'] ?? const {})['images'] ?? const {}),
+      cursor: json['cursor'],
+      option: _getOptionList((json['node'] ?? const {})),
+      vendor: (json['node'] ?? const {})['vendor'],
+      metafields: _getMetafieldList(
+          (json['node'] ?? const {})['metafields'] ?? const {}),
+      sellingPlanGroups: _getSellingPlanGroups(
+          (json['node'] ?? const {})['metafields'] ?? const {}),
+    );
   }
 
   factory Product.fromJson(Map<String, dynamic> json) =>
@@ -105,6 +110,16 @@ class Product with _$Product {
     json['edges']?.forEach((metafield) =>
         metafieldList.add(Metafield.fromGraphJson(metafield ?? const {})));
     return metafieldList;
+  }
+
+  static _getSellingPlanGroups(Map<String, dynamic> json) {
+    List<SellingPlanGroup> sellingGroups = [];
+    json['edges']?.forEach(
+      (data) => sellingGroups.add(
+        SellingPlanGroup.fromJson(data ?? const {}),
+      ),
+    );
+    return sellingGroups;
   }
 
   @override

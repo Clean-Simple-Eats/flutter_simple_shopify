@@ -66,6 +66,18 @@ query($ids : [ID!]!){
           }
         }
       }
+      sellingPlanGroups(first: 250) {
+        edges {
+          node {
+            appName
+            name
+            options {
+              name
+              values
+            }
+          }
+        }
+      }
       onlineStoreUrl
       productType
       publishedAt

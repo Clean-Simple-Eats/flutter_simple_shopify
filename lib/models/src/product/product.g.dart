@@ -39,6 +39,10 @@ _$_Product _$$_ProductFromJson(Map json) => _$_Product(
       description: json['description'] as String?,
       descriptionHtml: json['descriptionHtml'] as String?,
       handle: json['handle'] as String?,
+      sellingPlanGroups: (json['sellingPlanGroups'] as List<dynamic>)
+          .map((e) =>
+              SellingPlanGroup.fromJson(Map<String, dynamic>.from(e as Map)))
+          .toList(),
     );
 
 Map<String, dynamic> _$$_ProductToJson(_$_Product instance) {
@@ -71,5 +75,7 @@ Map<String, dynamic> _$$_ProductToJson(_$_Product instance) {
   writeNotNull('description', instance.description);
   writeNotNull('descriptionHtml', instance.descriptionHtml);
   writeNotNull('handle', instance.handle);
+  val['sellingPlanGroups'] =
+      instance.sellingPlanGroups.map((e) => e.toJson()).toList();
   return val;
 }

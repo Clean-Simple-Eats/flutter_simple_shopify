@@ -41,7 +41,8 @@ class _$ProductTearOff {
       String? onlineStoreUrl,
       String? description,
       String? descriptionHtml,
-      String? handle}) {
+      String? handle,
+      required List<SellingPlanGroup> sellingPlanGroups}) {
     return _Product(
       title: title,
       id: id,
@@ -62,6 +63,7 @@ class _$ProductTearOff {
       description: description,
       descriptionHtml: descriptionHtml,
       handle: handle,
+      sellingPlanGroups: sellingPlanGroups,
     );
   }
 
@@ -96,6 +98,8 @@ mixin _$Product {
   String? get description => throw _privateConstructorUsedError;
   String? get descriptionHtml => throw _privateConstructorUsedError;
   String? get handle => throw _privateConstructorUsedError;
+  List<SellingPlanGroup> get sellingPlanGroups =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -125,7 +129,8 @@ abstract class $ProductCopyWith<$Res> {
       String? onlineStoreUrl,
       String? description,
       String? descriptionHtml,
-      String? handle});
+      String? handle,
+      List<SellingPlanGroup> sellingPlanGroups});
 }
 
 /// @nodoc
@@ -157,6 +162,7 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
     Object? description = freezed,
     Object? descriptionHtml = freezed,
     Object? handle = freezed,
+    Object? sellingPlanGroups = freezed,
   }) {
     return _then(_value.copyWith(
       title: title == freezed
@@ -235,6 +241,10 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
           ? _value.handle
           : handle // ignore: cast_nullable_to_non_nullable
               as String?,
+      sellingPlanGroups: sellingPlanGroups == freezed
+          ? _value.sellingPlanGroups
+          : sellingPlanGroups // ignore: cast_nullable_to_non_nullable
+              as List<SellingPlanGroup>,
     ));
   }
 }
@@ -263,7 +273,8 @@ abstract class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
       String? onlineStoreUrl,
       String? description,
       String? descriptionHtml,
-      String? handle});
+      String? handle,
+      List<SellingPlanGroup> sellingPlanGroups});
 }
 
 /// @nodoc
@@ -296,6 +307,7 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
     Object? description = freezed,
     Object? descriptionHtml = freezed,
     Object? handle = freezed,
+    Object? sellingPlanGroups = freezed,
   }) {
     return _then(_Product(
       title: title == freezed
@@ -374,6 +386,10 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
           ? _value.handle
           : handle // ignore: cast_nullable_to_non_nullable
               as String?,
+      sellingPlanGroups: sellingPlanGroups == freezed
+          ? _value.sellingPlanGroups
+          : sellingPlanGroups // ignore: cast_nullable_to_non_nullable
+              as List<SellingPlanGroup>,
     ));
   }
 }
@@ -400,7 +416,8 @@ class _$_Product extends _Product {
       this.onlineStoreUrl,
       this.description,
       this.descriptionHtml,
-      this.handle})
+      this.handle,
+      required this.sellingPlanGroups})
       : super._();
 
   factory _$_Product.fromJson(Map<String, dynamic> json) =>
@@ -444,11 +461,8 @@ class _$_Product extends _Product {
   final String? descriptionHtml;
   @override
   final String? handle;
-
   @override
-  String toString() {
-    return 'Product(title: $title, id: $id, availableForSale: $availableForSale, createdAt: $createdAt, productVariants: $productVariants, productType: $productType, publishedAt: $publishedAt, tags: $tags, updatedAt: $updatedAt, images: $images, option: $option, vendor: $vendor, metafields: $metafields, collectionList: $collectionList, cursor: $cursor, onlineStoreUrl: $onlineStoreUrl, description: $description, descriptionHtml: $descriptionHtml, handle: $handle)';
-  }
+  final List<SellingPlanGroup> sellingPlanGroups;
 
   @override
   bool operator ==(dynamic other) {
@@ -482,7 +496,9 @@ class _$_Product extends _Product {
                 .equals(other.description, description) &&
             const DeepCollectionEquality()
                 .equals(other.descriptionHtml, descriptionHtml) &&
-            const DeepCollectionEquality().equals(other.handle, handle));
+            const DeepCollectionEquality().equals(other.handle, handle) &&
+            const DeepCollectionEquality()
+                .equals(other.sellingPlanGroups, sellingPlanGroups));
   }
 
   @override
@@ -506,7 +522,8 @@ class _$_Product extends _Product {
         const DeepCollectionEquality().hash(onlineStoreUrl),
         const DeepCollectionEquality().hash(description),
         const DeepCollectionEquality().hash(descriptionHtml),
-        const DeepCollectionEquality().hash(handle)
+        const DeepCollectionEquality().hash(handle),
+        const DeepCollectionEquality().hash(sellingPlanGroups)
       ]);
 
   @JsonKey(ignore: true)
@@ -540,7 +557,8 @@ abstract class _Product extends Product {
       String? onlineStoreUrl,
       String? description,
       String? descriptionHtml,
-      String? handle}) = _$_Product;
+      String? handle,
+      required List<SellingPlanGroup> sellingPlanGroups}) = _$_Product;
   _Product._() : super._();
 
   factory _Product.fromJson(Map<String, dynamic> json) = _$_Product.fromJson;
@@ -583,6 +601,8 @@ abstract class _Product extends Product {
   String? get descriptionHtml;
   @override
   String? get handle;
+  @override
+  List<SellingPlanGroup> get sellingPlanGroups;
   @override
   @JsonKey(ignore: true)
   _$ProductCopyWith<_Product> get copyWith =>
