@@ -80,6 +80,18 @@ query($n : Int, $sortKey : ProductSortKeys, $reverse: Boolean){
             }
           }
         }
+        sellingPlanGroups(first: 250) {
+          edges {
+            node {
+              appName
+              name
+              options {
+                name
+                values
+              }
+            }
+          }
+        }
       }
     }
   }

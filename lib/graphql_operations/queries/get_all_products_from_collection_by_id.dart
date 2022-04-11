@@ -87,6 +87,18 @@ query($id : ID!, $cursor : String, $sortKey: ProductCollectionSortKeys){
                 }
               }
             }
+            sellingPlanGroups(first: 250) {
+              edges {
+                node {
+                  appName
+                  name
+                  options {
+                    name
+                    values
+                  }
+                }
+              }
+            }
           }
         }
       pageInfo{

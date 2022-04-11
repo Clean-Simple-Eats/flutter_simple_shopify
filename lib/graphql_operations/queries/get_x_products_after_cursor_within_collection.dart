@@ -35,6 +35,18 @@ query($id : ID!, $cursor : String, $limit : Int, $sortKey : ProductCollectionSor
                 }
               }
             }
+            sellingPlanGroups(first: 250) {
+              edges {
+                node {
+                  appName
+                  name
+                  options {
+                    name
+                    values
+                  }
+                }
+              }
+            }
             createdAt
             description
             descriptionHtml

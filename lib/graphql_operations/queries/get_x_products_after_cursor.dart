@@ -59,6 +59,18 @@ query($cursor : String, $x : Int, $reverse: Boolean, $sortKey: ProductSortKeys){
             }
           }
         }
+        sellingPlanGroups(first: 250) {
+          edges {
+            node {
+              appName
+              name
+              options {
+                name
+                values
+              }
+            }
+          }
+        }
         createdAt
         description
         descriptionHtml

@@ -61,6 +61,18 @@ query( $cursor: String, $sortKey : ProductSortKeys, $query: String, $reverse: Bo
             }
           }
         }
+        sellingPlanGroups(first: 250) {
+          edges {
+            node {
+              appName
+              name
+              options {
+                name
+                values
+              }
+            }
+          }
+        }
       }
       cursor
     }

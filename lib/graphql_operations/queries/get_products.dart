@@ -92,6 +92,18 @@ query($cursor : String, $metafieldsNamespace : String){
             }
           }
         }
+        sellingPlanGroups(first: 250) {
+          edges {
+            node {
+              appName
+              name
+              options {
+                name
+                values
+              }
+            }
+          }
+        }
       }
     }
   }

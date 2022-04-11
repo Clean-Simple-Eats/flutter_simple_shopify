@@ -66,6 +66,18 @@ query($cursor: String, $sortKey: CollectionSortKeys, $sortKeyProduct: ProductCol
                   }
                 }
               }
+              sellingPlanGroups(first: 250) {
+                edges {
+                  node {
+                    appName
+                    name
+                    options {
+                      name
+                      values
+                    }
+                  }
+                }
+              }
               onlineStoreUrl
               productType
               publishedAt

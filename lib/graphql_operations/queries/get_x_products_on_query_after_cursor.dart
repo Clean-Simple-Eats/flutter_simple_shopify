@@ -30,6 +30,18 @@ query( $cursor: String, $limit : Int, $sortKey : ProductSortKeys, $query: String
             }
           }
         }
+        sellingPlanGroups(first: 250) {
+          edges {
+            node {
+              appName
+              name
+              options {
+                name
+                values
+              }
+            }
+          }
+        }
         variants(first: 250) {
           edges {
             node {
