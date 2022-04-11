@@ -114,7 +114,7 @@ class Product with _$Product {
 
   static _getSellingPlanGroups(Map<String, dynamic> json) {
     List<SellingPlanGroup> sellingGroups = [];
-    json['edges']?.forEach(
+    json['edges']?['node']?.forEach(
       (data) => sellingGroups.add(
         SellingPlanGroup.fromJson(data ?? const {}),
       ),
