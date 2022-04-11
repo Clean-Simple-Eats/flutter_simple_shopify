@@ -42,7 +42,7 @@ class _$ProductTearOff {
       String? description,
       String? descriptionHtml,
       String? handle,
-      required List<SellingPlanGroup> sellingPlanGroups}) {
+      List<SellingPlanGroup> sellingPlanGroups = const <SellingPlanGroup>[]}) {
     return _Product(
       title: title,
       id: id,
@@ -417,7 +417,7 @@ class _$_Product extends _Product {
       this.description,
       this.descriptionHtml,
       this.handle,
-      required this.sellingPlanGroups})
+      this.sellingPlanGroups = const <SellingPlanGroup>[]})
       : super._();
 
   factory _$_Product.fromJson(Map<String, dynamic> json) =>
@@ -461,6 +461,7 @@ class _$_Product extends _Product {
   final String? descriptionHtml;
   @override
   final String? handle;
+  @JsonKey()
   @override
   final List<SellingPlanGroup> sellingPlanGroups;
 
@@ -558,7 +559,7 @@ abstract class _Product extends Product {
       String? description,
       String? descriptionHtml,
       String? handle,
-      required List<SellingPlanGroup> sellingPlanGroups}) = _$_Product;
+      List<SellingPlanGroup> sellingPlanGroups}) = _$_Product;
   _Product._() : super._();
 
   factory _Product.fromJson(Map<String, dynamic> json) = _$_Product.fromJson;

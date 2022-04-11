@@ -39,10 +39,11 @@ _$_Product _$$_ProductFromJson(Map json) => _$_Product(
       description: json['description'] as String?,
       descriptionHtml: json['descriptionHtml'] as String?,
       handle: json['handle'] as String?,
-      sellingPlanGroups: (json['sellingPlanGroups'] as List<dynamic>)
-          .map((e) =>
-              SellingPlanGroup.fromJson(Map<String, dynamic>.from(e as Map)))
-          .toList(),
+      sellingPlanGroups: (json['sellingPlanGroups'] as List<dynamic>?)
+              ?.map((e) => SellingPlanGroup.fromJson(
+                  Map<String, dynamic>.from(e as Map)))
+              .toList() ??
+          const <SellingPlanGroup>[],
     );
 
 Map<String, dynamic> _$$_ProductToJson(_$_Product instance) {

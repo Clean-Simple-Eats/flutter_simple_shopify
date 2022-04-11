@@ -33,7 +33,7 @@ class Product with _$Product {
     String? description,
     String? descriptionHtml,
     String? handle,
-    required List<SellingPlanGroup> sellingPlanGroups,
+    @Default(<SellingPlanGroup>[]) List<SellingPlanGroup> sellingPlanGroups,
   }) = _Product;
 
   static Product fromGraphJson(Map<String, dynamic> json) {
