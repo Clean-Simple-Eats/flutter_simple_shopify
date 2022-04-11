@@ -9,7 +9,9 @@ class JsonHelper {
     if (json == null)
       return [];
     else if (json is List) {
-      return json.map((e) => LineItem.fromJson(e)).toList();
+      return json
+          .map((e) => LineItem.fromJson(Map<String, dynamic>.from(e)))
+          .toList();
     } else if (json['edges'] == null) {
       return [];
     }
