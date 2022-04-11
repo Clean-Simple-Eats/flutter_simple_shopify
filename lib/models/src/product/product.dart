@@ -59,7 +59,7 @@ class Product with _$Product {
       metafields: _getMetafieldList(
           (json['node'] ?? const {})['metafields'] ?? const {}),
       sellingPlanGroups: _getSellingPlanGroups(
-          (json['node'] ?? const {})['metafields'] ?? const {}),
+          (json['node'] ?? const {})['sellingPlanGroups'] ?? const {}),
     );
   }
 
