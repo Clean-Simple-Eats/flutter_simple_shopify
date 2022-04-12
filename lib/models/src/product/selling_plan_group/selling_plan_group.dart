@@ -27,7 +27,7 @@ class SellingPlanGroup with _$SellingPlanGroup {
             ) ??
             [].toList(),
       ),
-      sellingPlans: _getSellingPlans(json),
+      sellingPlans: _getSellingPlans(json['sellingPlans']),
     );
   }
 }
