@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 SellingPlanGroup _$SellingPlanGroupFromJson(Map<String, dynamic> json) {
-  return _SellingPlanGroup.fromJson(json);
+  return _SellingPlanGroup.fromGraphJson(json);
 }
 
 /// @nodoc
@@ -37,7 +37,7 @@ class _$SellingPlanGroupTearOff {
   }
 
   SellingPlanGroup fromJson(Map<String, Object?> json) {
-    return SellingPlanGroup.fromJson(json);
+    return SellingPlanGroup.fromGraphJson(json);
   }
 }
 
@@ -170,7 +170,7 @@ class _$_SellingPlanGroup implements _SellingPlanGroup {
       required this.options,
       @JsonKey(fromJson: _getSellingPlans) required this.sellingPlans});
 
-  factory _$_SellingPlanGroup.fromJson(Map<String, dynamic> json) =>
+  factory _$_SellingPlanGroup.fromGraphJson(Map<String, dynamic> json) =>
       _$$_SellingPlanGroupFromJson(json);
 
   @override
@@ -227,8 +227,8 @@ abstract class _SellingPlanGroup implements SellingPlanGroup {
       @JsonKey(fromJson: _getSellingPlans)
           required List<SellingPlan> sellingPlans}) = _$_SellingPlanGroup;
 
-  factory _SellingPlanGroup.fromJson(Map<String, dynamic> json) =
-      _$_SellingPlanGroup.fromJson;
+  factory _SellingPlanGroup.fromGraphJson(Map<String, dynamic> json) =
+      _$_SellingPlanGroup.fromGraphJson;
 
   @override
   String? get appName;

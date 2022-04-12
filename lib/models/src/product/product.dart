@@ -119,7 +119,7 @@ class Product with _$Product {
         final sellingPlanGroup = data?['node'];
 
         if (sellingPlanGroup != null)
-          sellingGroups.add(SellingPlanGroup.fromJson(sellingPlanGroup));
+          sellingGroups.add(SellingPlanGroup.fromGraphJson(sellingPlanGroup));
       },
     );
     return sellingGroups;

@@ -9,12 +9,28 @@ class SellingPlanGroup with _$SellingPlanGroup {
     required String? appName,
     required String name,
     required List<SellingPlanGroupOption> options,
-    @JsonKey(fromJson: _getSellingPlans)
-        required List<SellingPlan> sellingPlans,
+    required List<SellingPlan> sellingPlans,
   }) = _SellingPlanGroup;
 
   factory SellingPlanGroup.fromJson(Map<String, dynamic> json) =>
       _$SellingPlanGroupFromJson(json);
+
+  factory SellingPlanGroup.fromGraphJson(Map<String, dynamic> json) {
+    return SellingPlanGroup(
+      appName: json['appName'],
+      name: json['name'],
+      options: List<SellingPlanGroupOption>.from(
+        json['options']
+            .map(
+              (e) => SellingPlanGroupOption.fromJson(
+                Map<String, dynamic>.from(e as Map),
+              ),
+            )
+            .toList(),
+      ),
+      sellingPlans: _getSellingPlans(json),
+    );
+  }
 }
 
 @freezed

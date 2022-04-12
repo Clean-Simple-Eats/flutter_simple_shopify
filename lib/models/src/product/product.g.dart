@@ -40,7 +40,7 @@ _$_Product _$$_ProductFromJson(Map json) => _$_Product(
       descriptionHtml: json['descriptionHtml'] as String?,
       handle: json['handle'] as String?,
       sellingPlanGroups: (json['sellingPlanGroups'] as List<dynamic>?)
-              ?.map((e) => SellingPlanGroup.fromJson(
+              ?.map((e) => SellingPlanGroup.fromGraphJson(
                   Map<String, dynamic>.from(e as Map)))
               .toList() ??
           const <SellingPlanGroup>[],
