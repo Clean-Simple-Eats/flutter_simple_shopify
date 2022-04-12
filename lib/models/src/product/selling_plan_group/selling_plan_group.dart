@@ -54,8 +54,8 @@ class SellingPlan with _$SellingPlan {
       _$SellingPlanFromJson(json);
 }
 
-List<SellingPlan> _getSellingPlans(Map<String, dynamic> json) {
-  final sellingPlans = json['edges']
+List<SellingPlan> _getSellingPlans(List<dynamic>? plans) {
+  final sellingPlans = plans
       ?.map((e) => SellingPlan.fromJson(Map<String, dynamic>.from(e['node'])))
       .toList();
 
