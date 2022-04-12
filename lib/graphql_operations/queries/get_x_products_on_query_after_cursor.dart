@@ -39,6 +39,14 @@ query( $cursor: String, $limit : Int, $sortKey : ProductSortKeys, $query: String
                 name
                 values
               }
+              sellingPlans(first: 50) {
+                edges {
+                  node {
+                    id
+                    name
+                  }
+                }
+              }
             }
           }
         }

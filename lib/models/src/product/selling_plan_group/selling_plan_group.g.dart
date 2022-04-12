@@ -14,6 +14,8 @@ _$_SellingPlanGroup _$$_SellingPlanGroupFromJson(Map json) =>
           .map((e) => SellingPlanGroupOption.fromJson(
               Map<String, dynamic>.from(e as Map)))
           .toList(),
+      sellingPlans:
+          _getSellingPlans(json['sellingPlans'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_SellingPlanGroupToJson(_$_SellingPlanGroup instance) {
@@ -28,6 +30,7 @@ Map<String, dynamic> _$$_SellingPlanGroupToJson(_$_SellingPlanGroup instance) {
   writeNotNull('appName', instance.appName);
   val['name'] = instance.name;
   val['options'] = instance.options.map((e) => e.toJson()).toList();
+  val['sellingPlans'] = instance.sellingPlans.map((e) => e.toJson()).toList();
   return val;
 }
 
@@ -43,4 +46,15 @@ Map<String, dynamic> _$$_SellingPlanGroupOptionToJson(
     <String, dynamic>{
       'name': instance.name,
       'values': instance.values,
+    };
+
+_$_SellingPlan _$$_SellingPlanFromJson(Map json) => _$_SellingPlan(
+      id: json['id'] as String,
+      name: json['name'] as String,
+    );
+
+Map<String, dynamic> _$$_SellingPlanToJson(_$_SellingPlan instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
     };

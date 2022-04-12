@@ -96,6 +96,14 @@ query($id : ID!, $cursor : String, $sortKey: ProductCollectionSortKeys){
                     name
                     values
                   }
+                  sellingPlans(first: 50) {
+                    edges {
+                      node {
+                        id
+                        name
+                      }
+                    }
+                  }
                 }
               }
             }

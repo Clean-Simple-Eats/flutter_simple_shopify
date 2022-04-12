@@ -75,6 +75,14 @@ query($ids : [ID!]!){
               name
               values
             }
+            sellingPlans(first: 50) {
+              edges {
+                node {
+                  id
+                  name
+                }
+              }
+            }
           }
         }
       }

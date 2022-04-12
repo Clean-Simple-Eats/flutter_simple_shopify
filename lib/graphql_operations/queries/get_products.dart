@@ -101,6 +101,14 @@ query($cursor : String, $metafieldsNamespace : String){
                 name
                 values
               }
+              sellingPlans(first: 50) {
+                edges {
+                  node {
+                    id
+                    name
+                  }
+                }
+              }
             }
           }
         }

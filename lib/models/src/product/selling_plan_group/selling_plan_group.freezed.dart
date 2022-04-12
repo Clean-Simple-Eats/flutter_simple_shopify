@@ -25,11 +25,14 @@ class _$SellingPlanGroupTearOff {
   _SellingPlanGroup call(
       {required String? appName,
       required String name,
-      required List<SellingPlanGroupOption> options}) {
+      required List<SellingPlanGroupOption> options,
+      @JsonKey(fromJson: _getSellingPlans)
+          required List<SellingPlan> sellingPlans}) {
     return _SellingPlanGroup(
       appName: appName,
       name: name,
       options: options,
+      sellingPlans: sellingPlans,
     );
   }
 
@@ -47,6 +50,8 @@ mixin _$SellingPlanGroup {
   String get name => throw _privateConstructorUsedError;
   List<SellingPlanGroupOption> get options =>
       throw _privateConstructorUsedError;
+  @JsonKey(fromJson: _getSellingPlans)
+  List<SellingPlan> get sellingPlans => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -60,7 +65,10 @@ abstract class $SellingPlanGroupCopyWith<$Res> {
           SellingPlanGroup value, $Res Function(SellingPlanGroup) then) =
       _$SellingPlanGroupCopyWithImpl<$Res>;
   $Res call(
-      {String? appName, String name, List<SellingPlanGroupOption> options});
+      {String? appName,
+      String name,
+      List<SellingPlanGroupOption> options,
+      @JsonKey(fromJson: _getSellingPlans) List<SellingPlan> sellingPlans});
 }
 
 /// @nodoc
@@ -77,6 +85,7 @@ class _$SellingPlanGroupCopyWithImpl<$Res>
     Object? appName = freezed,
     Object? name = freezed,
     Object? options = freezed,
+    Object? sellingPlans = freezed,
   }) {
     return _then(_value.copyWith(
       appName: appName == freezed
@@ -91,6 +100,10 @@ class _$SellingPlanGroupCopyWithImpl<$Res>
           ? _value.options
           : options // ignore: cast_nullable_to_non_nullable
               as List<SellingPlanGroupOption>,
+      sellingPlans: sellingPlans == freezed
+          ? _value.sellingPlans
+          : sellingPlans // ignore: cast_nullable_to_non_nullable
+              as List<SellingPlan>,
     ));
   }
 }
@@ -103,7 +116,10 @@ abstract class _$SellingPlanGroupCopyWith<$Res>
       __$SellingPlanGroupCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String? appName, String name, List<SellingPlanGroupOption> options});
+      {String? appName,
+      String name,
+      List<SellingPlanGroupOption> options,
+      @JsonKey(fromJson: _getSellingPlans) List<SellingPlan> sellingPlans});
 }
 
 /// @nodoc
@@ -122,6 +138,7 @@ class __$SellingPlanGroupCopyWithImpl<$Res>
     Object? appName = freezed,
     Object? name = freezed,
     Object? options = freezed,
+    Object? sellingPlans = freezed,
   }) {
     return _then(_SellingPlanGroup(
       appName: appName == freezed
@@ -136,6 +153,10 @@ class __$SellingPlanGroupCopyWithImpl<$Res>
           ? _value.options
           : options // ignore: cast_nullable_to_non_nullable
               as List<SellingPlanGroupOption>,
+      sellingPlans: sellingPlans == freezed
+          ? _value.sellingPlans
+          : sellingPlans // ignore: cast_nullable_to_non_nullable
+              as List<SellingPlan>,
     ));
   }
 }
@@ -144,7 +165,10 @@ class __$SellingPlanGroupCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_SellingPlanGroup implements _SellingPlanGroup {
   const _$_SellingPlanGroup(
-      {required this.appName, required this.name, required this.options});
+      {required this.appName,
+      required this.name,
+      required this.options,
+      @JsonKey(fromJson: _getSellingPlans) required this.sellingPlans});
 
   factory _$_SellingPlanGroup.fromJson(Map<String, dynamic> json) =>
       _$$_SellingPlanGroupFromJson(json);
@@ -155,10 +179,13 @@ class _$_SellingPlanGroup implements _SellingPlanGroup {
   final String name;
   @override
   final List<SellingPlanGroupOption> options;
+  @override
+  @JsonKey(fromJson: _getSellingPlans)
+  final List<SellingPlan> sellingPlans;
 
   @override
   String toString() {
-    return 'SellingPlanGroup(appName: $appName, name: $name, options: $options)';
+    return 'SellingPlanGroup(appName: $appName, name: $name, options: $options, sellingPlans: $sellingPlans)';
   }
 
   @override
@@ -168,7 +195,9 @@ class _$_SellingPlanGroup implements _SellingPlanGroup {
             other is _SellingPlanGroup &&
             const DeepCollectionEquality().equals(other.appName, appName) &&
             const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.options, options));
+            const DeepCollectionEquality().equals(other.options, options) &&
+            const DeepCollectionEquality()
+                .equals(other.sellingPlans, sellingPlans));
   }
 
   @override
@@ -176,7 +205,8 @@ class _$_SellingPlanGroup implements _SellingPlanGroup {
       runtimeType,
       const DeepCollectionEquality().hash(appName),
       const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(options));
+      const DeepCollectionEquality().hash(options),
+      const DeepCollectionEquality().hash(sellingPlans));
 
   @JsonKey(ignore: true)
   @override
@@ -193,7 +223,9 @@ abstract class _SellingPlanGroup implements SellingPlanGroup {
   const factory _SellingPlanGroup(
       {required String? appName,
       required String name,
-      required List<SellingPlanGroupOption> options}) = _$_SellingPlanGroup;
+      required List<SellingPlanGroupOption> options,
+      @JsonKey(fromJson: _getSellingPlans)
+          required List<SellingPlan> sellingPlans}) = _$_SellingPlanGroup;
 
   factory _SellingPlanGroup.fromJson(Map<String, dynamic> json) =
       _$_SellingPlanGroup.fromJson;
@@ -204,6 +236,9 @@ abstract class _SellingPlanGroup implements SellingPlanGroup {
   String get name;
   @override
   List<SellingPlanGroupOption> get options;
+  @override
+  @JsonKey(fromJson: _getSellingPlans)
+  List<SellingPlan> get sellingPlans;
   @override
   @JsonKey(ignore: true)
   _$SellingPlanGroupCopyWith<_SellingPlanGroup> get copyWith =>
@@ -380,5 +415,172 @@ abstract class _SellingPlanGroupOption implements SellingPlanGroupOption {
   @override
   @JsonKey(ignore: true)
   _$SellingPlanGroupOptionCopyWith<_SellingPlanGroupOption> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+SellingPlan _$SellingPlanFromJson(Map<String, dynamic> json) {
+  return _SellingPlan.fromJson(json);
+}
+
+/// @nodoc
+class _$SellingPlanTearOff {
+  const _$SellingPlanTearOff();
+
+  _SellingPlan call({required String id, required String name}) {
+    return _SellingPlan(
+      id: id,
+      name: name,
+    );
+  }
+
+  SellingPlan fromJson(Map<String, Object?> json) {
+    return SellingPlan.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $SellingPlan = _$SellingPlanTearOff();
+
+/// @nodoc
+mixin _$SellingPlan {
+  String get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SellingPlanCopyWith<SellingPlan> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SellingPlanCopyWith<$Res> {
+  factory $SellingPlanCopyWith(
+          SellingPlan value, $Res Function(SellingPlan) then) =
+      _$SellingPlanCopyWithImpl<$Res>;
+  $Res call({String id, String name});
+}
+
+/// @nodoc
+class _$SellingPlanCopyWithImpl<$Res> implements $SellingPlanCopyWith<$Res> {
+  _$SellingPlanCopyWithImpl(this._value, this._then);
+
+  final SellingPlan _value;
+  // ignore: unused_field
+  final $Res Function(SellingPlan) _then;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? name = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$SellingPlanCopyWith<$Res>
+    implements $SellingPlanCopyWith<$Res> {
+  factory _$SellingPlanCopyWith(
+          _SellingPlan value, $Res Function(_SellingPlan) then) =
+      __$SellingPlanCopyWithImpl<$Res>;
+  @override
+  $Res call({String id, String name});
+}
+
+/// @nodoc
+class __$SellingPlanCopyWithImpl<$Res> extends _$SellingPlanCopyWithImpl<$Res>
+    implements _$SellingPlanCopyWith<$Res> {
+  __$SellingPlanCopyWithImpl(
+      _SellingPlan _value, $Res Function(_SellingPlan) _then)
+      : super(_value, (v) => _then(v as _SellingPlan));
+
+  @override
+  _SellingPlan get _value => super._value as _SellingPlan;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? name = freezed,
+  }) {
+    return _then(_SellingPlan(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_SellingPlan implements _SellingPlan {
+  const _$_SellingPlan({required this.id, required this.name});
+
+  factory _$_SellingPlan.fromJson(Map<String, dynamic> json) =>
+      _$$_SellingPlanFromJson(json);
+
+  @override
+  final String id;
+  @override
+  final String name;
+
+  @override
+  String toString() {
+    return 'SellingPlan(id: $id, name: $name)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _SellingPlan &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.name, name));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(name));
+
+  @JsonKey(ignore: true)
+  @override
+  _$SellingPlanCopyWith<_SellingPlan> get copyWith =>
+      __$SellingPlanCopyWithImpl<_SellingPlan>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_SellingPlanToJson(this);
+  }
+}
+
+abstract class _SellingPlan implements SellingPlan {
+  const factory _SellingPlan({required String id, required String name}) =
+      _$_SellingPlan;
+
+  factory _SellingPlan.fromJson(Map<String, dynamic> json) =
+      _$_SellingPlan.fromJson;
+
+  @override
+  String get id;
+  @override
+  String get name;
+  @override
+  @JsonKey(ignore: true)
+  _$SellingPlanCopyWith<_SellingPlan> get copyWith =>
       throw _privateConstructorUsedError;
 }

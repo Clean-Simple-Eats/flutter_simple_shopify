@@ -89,6 +89,14 @@ query($n : Int, $sortKey : ProductSortKeys, $reverse: Boolean){
                 name
                 values
               }
+              sellingPlans(first: 50) {
+                edges {
+                  node {
+                    id
+                    name
+                  }
+                }
+              }
             }
           }
         }
