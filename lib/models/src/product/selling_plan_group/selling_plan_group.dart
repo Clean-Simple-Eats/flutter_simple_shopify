@@ -27,7 +27,7 @@ class SellingPlanGroup with _$SellingPlanGroup {
             ) ??
             [].toList(),
       ),
-      sellingPlans: _getSellingPlans(json['sellingPlans']),
+      sellingPlans: _getSellingPlans(json),
     );
   }
 }
@@ -54,8 +54,8 @@ class SellingPlan with _$SellingPlan {
       _$SellingPlanFromJson(json);
 }
 
-List<SellingPlan> _getSellingPlans(List<dynamic>? plans) {
-  final sellingPlans = plans
+List<SellingPlan> _getSellingPlans(Map<String, dynamic> json) {
+  final sellingPlans = json['sellingPlans']
       ?.map((e) => SellingPlan.fromJson(Map<String, dynamic>.from(e['node'])))
       .toList();
 
