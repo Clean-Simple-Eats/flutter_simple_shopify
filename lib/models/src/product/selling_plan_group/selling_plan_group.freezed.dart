@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 SellingPlanGroup _$SellingPlanGroupFromJson(Map<String, dynamic> json) {
-  return _SellingPlanGroup.fromGraphJson(json);
+  return _SellingPlanGroup.fromJson(json);
 }
 
 /// @nodoc
@@ -26,8 +26,7 @@ class _$SellingPlanGroupTearOff {
       {required String? appName,
       required String name,
       required List<SellingPlanGroupOption> options,
-      @JsonKey(fromJson: _getSellingPlans)
-          required List<SellingPlan> sellingPlans}) {
+      required List<SellingPlan> sellingPlans}) {
     return _SellingPlanGroup(
       appName: appName,
       name: name,
@@ -37,7 +36,7 @@ class _$SellingPlanGroupTearOff {
   }
 
   SellingPlanGroup fromJson(Map<String, Object?> json) {
-    return SellingPlanGroup.fromGraphJson(json);
+    return SellingPlanGroup.fromJson(json);
   }
 }
 
@@ -50,7 +49,6 @@ mixin _$SellingPlanGroup {
   String get name => throw _privateConstructorUsedError;
   List<SellingPlanGroupOption> get options =>
       throw _privateConstructorUsedError;
-  @JsonKey(fromJson: _getSellingPlans)
   List<SellingPlan> get sellingPlans => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -68,7 +66,7 @@ abstract class $SellingPlanGroupCopyWith<$Res> {
       {String? appName,
       String name,
       List<SellingPlanGroupOption> options,
-      @JsonKey(fromJson: _getSellingPlans) List<SellingPlan> sellingPlans});
+      List<SellingPlan> sellingPlans});
 }
 
 /// @nodoc
@@ -119,7 +117,7 @@ abstract class _$SellingPlanGroupCopyWith<$Res>
       {String? appName,
       String name,
       List<SellingPlanGroupOption> options,
-      @JsonKey(fromJson: _getSellingPlans) List<SellingPlan> sellingPlans});
+      List<SellingPlan> sellingPlans});
 }
 
 /// @nodoc
@@ -168,9 +166,9 @@ class _$_SellingPlanGroup implements _SellingPlanGroup {
       {required this.appName,
       required this.name,
       required this.options,
-      @JsonKey(fromJson: _getSellingPlans) required this.sellingPlans});
+      required this.sellingPlans});
 
-  factory _$_SellingPlanGroup.fromGraphJson(Map<String, dynamic> json) =>
+  factory _$_SellingPlanGroup.fromJson(Map<String, dynamic> json) =>
       _$$_SellingPlanGroupFromJson(json);
 
   @override
@@ -180,7 +178,6 @@ class _$_SellingPlanGroup implements _SellingPlanGroup {
   @override
   final List<SellingPlanGroupOption> options;
   @override
-  @JsonKey(fromJson: _getSellingPlans)
   final List<SellingPlan> sellingPlans;
 
   @override
@@ -224,11 +221,10 @@ abstract class _SellingPlanGroup implements SellingPlanGroup {
       {required String? appName,
       required String name,
       required List<SellingPlanGroupOption> options,
-      @JsonKey(fromJson: _getSellingPlans)
-          required List<SellingPlan> sellingPlans}) = _$_SellingPlanGroup;
+      required List<SellingPlan> sellingPlans}) = _$_SellingPlanGroup;
 
-  factory _SellingPlanGroup.fromGraphJson(Map<String, dynamic> json) =
-      _$_SellingPlanGroup.fromGraphJson;
+  factory _SellingPlanGroup.fromJson(Map<String, dynamic> json) =
+      _$_SellingPlanGroup.fromJson;
 
   @override
   String? get appName;
@@ -237,7 +233,6 @@ abstract class _SellingPlanGroup implements SellingPlanGroup {
   @override
   List<SellingPlanGroupOption> get options;
   @override
-  @JsonKey(fromJson: _getSellingPlans)
   List<SellingPlan> get sellingPlans;
   @override
   @JsonKey(ignore: true)

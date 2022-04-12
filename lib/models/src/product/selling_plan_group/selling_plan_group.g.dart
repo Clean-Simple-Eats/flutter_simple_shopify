@@ -14,8 +14,9 @@ _$_SellingPlanGroup _$$_SellingPlanGroupFromJson(Map json) =>
           .map((e) => SellingPlanGroupOption.fromJson(
               Map<String, dynamic>.from(e as Map)))
           .toList(),
-      sellingPlans:
-          _getSellingPlans(json['sellingPlans'] as Map<String, dynamic>),
+      sellingPlans: (json['sellingPlans'] as List<dynamic>)
+          .map((e) => SellingPlan.fromJson(Map<String, dynamic>.from(e as Map)))
+          .toList(),
     );
 
 Map<String, dynamic> _$$_SellingPlanGroupToJson(_$_SellingPlanGroup instance) {
