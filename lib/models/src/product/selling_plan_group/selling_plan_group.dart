@@ -20,13 +20,12 @@ class SellingPlanGroup with _$SellingPlanGroup {
       appName: json['appName'],
       name: json['name'],
       options: List<SellingPlanGroupOption>.from(
-        json['options']
-            .map(
+        json['options']?.map(
               (e) => SellingPlanGroupOption.fromJson(
                 Map<String, dynamic>.from(e as Map),
               ),
-            )
-            .toList(),
+            ) ??
+            [].toList(),
       ),
       sellingPlans: _getSellingPlans(json),
     );
@@ -57,8 +56,8 @@ class SellingPlan with _$SellingPlan {
 
 List<SellingPlan> _getSellingPlans(Map<String, dynamic> json) {
   final sellingPlans = json['edges']
-      .map((e) => SellingPlan.fromJson(Map<String, dynamic>.from(e['node'])))
+      ?.map((e) => SellingPlan.fromJson(Map<String, dynamic>.from(e['node'])))
       .toList();
 
-  return List<SellingPlan>.from(sellingPlans);
+  return List<SellingPlan>.from(sellingPlans ?? []);
 }
