@@ -8,7 +8,9 @@ import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_lin
 import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_shipping_address_update.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_shipping_line_update.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/complete_checkout_token_v3.dart';
+import 'package:flutter_simple_shopify/graphql_operations/mutations/create_cart.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/create_checkout.dart';
+import 'package:flutter_simple_shopify/graphql_operations/queries/create_checkout_from_cart.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_info_requires_shipping.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_info_with_payment_id.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_info_with_payment_id_without_shipping_rates.dart';
@@ -40,18 +42,71 @@ class ShopifyCheckout with ShopifyError {
 
   GraphQLClient? get _graphQLClient => ShopifyConfig.graphQLClient;
 
+  /// returns the cart id
+  Future<String> createCart(List<LineItem> lineItems) async {
+    final Map<String, dynamic> variables = {
+      'input': {
+        'lines': lineItems.map((e) => {
+              'quantity': e.quantity,
+              'merchandiseId': e.id,
+              'sellingPlanId': e.sellingPlanId,
+            }),
+      },
+    };
+
+    final QueryResult result = await _graphQLClient!.mutate(
+      MutationOptions(
+        document: gql(createCartMutation),
+        variables: variables,
+      ),
+    );
+
+    final cartId = result.data?['createCart']['cart']['id'] as String?;
+
+    if (cartId == null) {
+      throw Exception('Could not create cart');
+    }
+
+    return cartId;
+  }
+
+  /// returns the URL to the checkout page.
+  Future<String> getCheckoutUrlFromCart(String cartId) async {
+    final Map<String, dynamic> variables = {
+      'id': cartId,
+    };
+
+    final QueryResult result = await _graphQLClient!.query(
+      QueryOptions(
+        document: gql(getCheckoutFromCart),
+        variables: variables,
+      ),
+    );
+
+    final checkoutUrl = result.data?['cart']['checkoutUrl'] as String?;
+
+    if (checkoutUrl == null) {
+      throw Exception('Could not get checkout url');
+    }
+
+    return checkoutUrl;
+  }
+
   /// Returns a [Checkout] object.
   ///
   /// Returns the Checkout object of the checkout with the [checkoutId].
-  Future<Checkout> getCheckoutInfoQuery(String checkoutId,
-      {bool getShippingInfo = true,
-      bool withPaymentId = false,
-      bool deleteThisPartOfCache = false}) async {
+  Future<Checkout> getCheckoutInfoQuery(
+    String checkoutId, {
+    bool getShippingInfo = true,
+    bool withPaymentId = false,
+    bool deleteThisPartOfCache = false,
+  }) async {
     final WatchQueryOptions _optionsRequireShipping = WatchQueryOptions(
         document: gql(getCheckoutInfoAboutShipping),
         variables: {
           'id': checkoutId,
         });
+
     QueryResult result = await _graphQLClient!.query(_optionsRequireShipping);
 
     final WatchQueryOptions _options = WatchQueryOptions(
@@ -65,8 +120,11 @@ class ShopifyCheckout with ShopifyError {
         variables: {
           'id': checkoutId,
         });
+
     final QueryResult _queryResult = (await _graphQLClient!.query(_options));
+
     checkForError(_queryResult);
+
     if (deleteThisPartOfCache) {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }

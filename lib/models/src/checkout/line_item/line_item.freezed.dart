@@ -25,7 +25,9 @@ class _$LineItemTearOff {
   _LineItem call(
       {required String title,
       required int quantity,
-      required List<DiscountAllocations> discountAllocations,
+      String? sellingPlanId,
+      List<DiscountAllocations> discountAllocations =
+          const <DiscountAllocations>[],
       List<Attribute> customAttributes = const <Attribute>[],
       String? variantId,
       String? id,
@@ -33,6 +35,7 @@ class _$LineItemTearOff {
     return _LineItem(
       title: title,
       quantity: quantity,
+      sellingPlanId: sellingPlanId,
       discountAllocations: discountAllocations,
       customAttributes: customAttributes,
       variantId: variantId,
@@ -53,6 +56,7 @@ const $LineItem = _$LineItemTearOff();
 mixin _$LineItem {
   String get title => throw _privateConstructorUsedError;
   int get quantity => throw _privateConstructorUsedError;
+  String? get sellingPlanId => throw _privateConstructorUsedError;
   List<DiscountAllocations> get discountAllocations =>
       throw _privateConstructorUsedError;
   List<Attribute> get customAttributes => throw _privateConstructorUsedError;
@@ -73,6 +77,7 @@ abstract class $LineItemCopyWith<$Res> {
   $Res call(
       {String title,
       int quantity,
+      String? sellingPlanId,
       List<DiscountAllocations> discountAllocations,
       List<Attribute> customAttributes,
       String? variantId,
@@ -94,6 +99,7 @@ class _$LineItemCopyWithImpl<$Res> implements $LineItemCopyWith<$Res> {
   $Res call({
     Object? title = freezed,
     Object? quantity = freezed,
+    Object? sellingPlanId = freezed,
     Object? discountAllocations = freezed,
     Object? customAttributes = freezed,
     Object? variantId = freezed,
@@ -109,6 +115,10 @@ class _$LineItemCopyWithImpl<$Res> implements $LineItemCopyWith<$Res> {
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as int,
+      sellingPlanId: sellingPlanId == freezed
+          ? _value.sellingPlanId
+          : sellingPlanId // ignore: cast_nullable_to_non_nullable
+              as String?,
       discountAllocations: discountAllocations == freezed
           ? _value.discountAllocations
           : discountAllocations // ignore: cast_nullable_to_non_nullable
@@ -152,6 +162,7 @@ abstract class _$LineItemCopyWith<$Res> implements $LineItemCopyWith<$Res> {
   $Res call(
       {String title,
       int quantity,
+      String? sellingPlanId,
       List<DiscountAllocations> discountAllocations,
       List<Attribute> customAttributes,
       String? variantId,
@@ -175,6 +186,7 @@ class __$LineItemCopyWithImpl<$Res> extends _$LineItemCopyWithImpl<$Res>
   $Res call({
     Object? title = freezed,
     Object? quantity = freezed,
+    Object? sellingPlanId = freezed,
     Object? discountAllocations = freezed,
     Object? customAttributes = freezed,
     Object? variantId = freezed,
@@ -190,6 +202,10 @@ class __$LineItemCopyWithImpl<$Res> extends _$LineItemCopyWithImpl<$Res>
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as int,
+      sellingPlanId: sellingPlanId == freezed
+          ? _value.sellingPlanId
+          : sellingPlanId // ignore: cast_nullable_to_non_nullable
+              as String?,
       discountAllocations: discountAllocations == freezed
           ? _value.discountAllocations
           : discountAllocations // ignore: cast_nullable_to_non_nullable
@@ -220,7 +236,8 @@ class _$_LineItem extends _LineItem {
   _$_LineItem(
       {required this.title,
       required this.quantity,
-      required this.discountAllocations,
+      this.sellingPlanId,
+      this.discountAllocations = const <DiscountAllocations>[],
       this.customAttributes = const <Attribute>[],
       this.variantId,
       this.id,
@@ -235,6 +252,9 @@ class _$_LineItem extends _LineItem {
   @override
   final int quantity;
   @override
+  final String? sellingPlanId;
+  @JsonKey()
+  @override
   final List<DiscountAllocations> discountAllocations;
   @JsonKey()
   @override
@@ -248,7 +268,7 @@ class _$_LineItem extends _LineItem {
 
   @override
   String toString() {
-    return 'LineItem(title: $title, quantity: $quantity, discountAllocations: $discountAllocations, customAttributes: $customAttributes, variantId: $variantId, id: $id, variant: $variant)';
+    return 'LineItem(title: $title, quantity: $quantity, sellingPlanId: $sellingPlanId, discountAllocations: $discountAllocations, customAttributes: $customAttributes, variantId: $variantId, id: $id, variant: $variant)';
   }
 
   @override
@@ -258,6 +278,8 @@ class _$_LineItem extends _LineItem {
             other is _LineItem &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.quantity, quantity) &&
+            const DeepCollectionEquality()
+                .equals(other.sellingPlanId, sellingPlanId) &&
             const DeepCollectionEquality()
                 .equals(other.discountAllocations, discountAllocations) &&
             const DeepCollectionEquality()
@@ -272,6 +294,7 @@ class _$_LineItem extends _LineItem {
       runtimeType,
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(quantity),
+      const DeepCollectionEquality().hash(sellingPlanId),
       const DeepCollectionEquality().hash(discountAllocations),
       const DeepCollectionEquality().hash(customAttributes),
       const DeepCollectionEquality().hash(variantId),
@@ -293,7 +316,8 @@ abstract class _LineItem extends LineItem {
   factory _LineItem(
       {required String title,
       required int quantity,
-      required List<DiscountAllocations> discountAllocations,
+      String? sellingPlanId,
+      List<DiscountAllocations> discountAllocations,
       List<Attribute> customAttributes,
       String? variantId,
       String? id,
@@ -306,6 +330,8 @@ abstract class _LineItem extends LineItem {
   String get title;
   @override
   int get quantity;
+  @override
+  String? get sellingPlanId;
   @override
   List<DiscountAllocations> get discountAllocations;
   @override
