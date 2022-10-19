@@ -12,7 +12,7 @@ _$_ProductVariant _$$_ProductVariantFromJson(Map json) => _$_ProductVariant(
       weight: (json['weight'] as num).toDouble(),
       weightUnit: json['weightUnit'] as String,
       availableForSale: json['availableForSale'] as bool,
-      sku: json['sku'] as String,
+      sku: json['sku'] as String?,
       requiresShipping: json['requiresShipping'] as bool,
       id: json['id'] as String,
       quantityAvailable: json['quantityAvailable'] as int,
@@ -45,10 +45,6 @@ Map<String, dynamic> _$$_ProductVariantToJson(_$_ProductVariant instance) {
     'weight': instance.weight,
     'weightUnit': instance.weightUnit,
     'availableForSale': instance.availableForSale,
-    'sku': instance.sku,
-    'requiresShipping': instance.requiresShipping,
-    'id': instance.id,
-    'quantityAvailable': instance.quantityAvailable,
   };
 
   void writeNotNull(String key, dynamic value) {
@@ -57,6 +53,10 @@ Map<String, dynamic> _$$_ProductVariantToJson(_$_ProductVariant instance) {
     }
   }
 
+  writeNotNull('sku', instance.sku);
+  val['requiresShipping'] = instance.requiresShipping;
+  val['id'] = instance.id;
+  val['quantityAvailable'] = instance.quantityAvailable;
   writeNotNull('unitPrice', instance.unitPrice?.toJson());
   writeNotNull('unitPriceMeasurement', instance.unitPriceMeasurement?.toJson());
   writeNotNull('selectedOptions',

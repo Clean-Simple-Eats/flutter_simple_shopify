@@ -16,7 +16,7 @@ class ProductVariant with _$ProductVariant {
     required double weight,
     required String weightUnit,
     required bool availableForSale,
-    required String sku,
+    required String? sku,
     required bool requiresShipping,
     required String id,
     required int quantityAvailable,
