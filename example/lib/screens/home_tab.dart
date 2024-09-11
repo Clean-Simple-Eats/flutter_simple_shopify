@@ -48,7 +48,7 @@ class _HomeTabState extends State<HomeTab> {
           sortKey: SortKeyProduct.BEST_SELLING);
       if (mounted) {
         setState(() {
-          products = bestSellingProducts;
+          products = bestSellingProducts ?? [];
           _isLoading = false;
         });
       }
@@ -64,14 +64,14 @@ class _HomeTabState extends State<HomeTab> {
         alignment: Alignment.bottomCenter,
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        decoration: product?.images?.first?.originalSrc != null
-            ? BoxDecoration(
-                image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: NetworkImage(
-                      product.images.first.originalSrc,
-                    )))
-            : const BoxDecoration(),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            fit: BoxFit.cover,
+            image: NetworkImage(
+              product.images.first.originalSrc,
+            ),
+          ),
+        ),
         child: Container(
           width: MediaQuery.of(context).size.width,
           alignment: Alignment.bottomCenter,
